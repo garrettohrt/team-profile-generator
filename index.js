@@ -3,6 +3,7 @@ const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const inquirer = require('inquirer');
 const fs = require('fs');
+const generateHTML = require('./src/generate-html')
 const employeeStorage = []
 
 //ask manager
@@ -54,7 +55,7 @@ function addAnother() {
                 break;
 
             case "Finish":
-                generateHTML()
+             makeTeam()
         }
     });
 };
@@ -122,5 +123,16 @@ function makeIntern() {
     });
 };
 
+const makeTeam = () => {
+    const pageHTML = generateHTML(employeeStorage);
+console.log(pageHTML, "please work")
+fs.writeFile("./dist/team-profile.html",pageHTML,(err)=>{
+    if(err){
+        console.log(err);
+    }else{
+        console.log("html file created")
+    }
+    }
+)
+}
 makeManager()
-module.exports = employeeStorage
