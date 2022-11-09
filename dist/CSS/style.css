@@ -5,3 +5,14 @@ h1 {
     justify-content: center;
 }
 
+main{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+    padding: 10px;
+}
+
+.card {
+    padding: 10px;
+    margin: 15px;
+}
