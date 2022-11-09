@@ -1,28 +1,65 @@
 const generateTeam = (team) => {
     console.log(team);
     const html = [];
-    if (team[0].getRole() === 'Manager') {
+    for (let i = 0; i < team.length; i++) {
 
 
 
-        
-        let managerHtml = ` 
+        if (team[i].getRole() === 'Manager') {
+
+            let managerHtml = ` 
         <div class="card" style="width: 18rem;">
         <div class="card-header">
-       ${team[0].name}<br/>
+       ${team[i].name}<br/>
        <i class="fas fa-mug-hot"></i>Manager</div>
        <ul class="list-group list-group-flush">
-        <li class="list-group-item">${team[0].id}</li>
-        <li class="list-group-item">Email:${team[0].email} <span id="email"><a>${team[0].email}</a>
-        <li class="list-group-item">Office Number: ${team[0].officeNumber}</li>
+        <li class="list-group-item">${team[i].id}</li>
+        <li class="list-group-item">Email:<span id="email"><a href="mailto:${team[i].email}">${team[i].email}</a>
+        <li class="list-group-item">Office Number: ${team[i].officeNumber}</li>
         </ul>
     </div>
         `;
-        html.push(managerHtml);
+            html.push(managerHtml);
+
+        }
 
 
+        if (team[i].getRole() === 'Engineer') {
+
+            let engineerHtml = ` 
+        <div class="card" style="width: 18rem;">
+        <div class="card-header">
+       ${team[i].name}<br/>
+       <i class="fa-solid fa-glasses"></i>Engineer</div>
+       <ul class="list-group list-group-flush">
+        <li class="list-group-item">${team[i].id}</li>
+        <li class="list-group-item">Email:<span id="email"><a href="mailto:${team[i].email}">${team[i].email}</a>
+        <li class="list-group-item">Github username: ${team[i].github}</li>
+        </ul>
+    </div>
+        `;
+            html.push(engineerHtml);
+
+        }
+
+        if (team[i].getRole() === 'Intern') {
+
+            let internHtml = ` 
+        <div class="card" style="width: 18rem;">
+        <div class="card-header">
+       ${team[i].name}<br/>
+       <i class="fa-solid fa-school"></i>Intern</div>
+       <ul class="list-group list-group-flush">
+        <li class="list-group-item">${team[i].id}</li>
+        <li class="list-group-item">Email:<span id="email"><a href="mailto:${team[i].email}">${team[i].email}</a>
+        <li class="list-group-item">School: ${team[i].school}</li>
+        </ul>
+    </div>
+        `;
+            html.push(internHtml);
+
+        }
     }
-
 
     const page = `<!DOCTYPE html>
 <html lang="en">
@@ -33,7 +70,7 @@ const generateTeam = (team) => {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-      <link rel="stylesheet" href="../dist/style.css"/>
+      <link rel="stylesheet" href="./CSS/style.css"/>
     <title>Team Profile Generator</title>
 </head>
 <body>
@@ -45,6 +82,6 @@ const generateTeam = (team) => {
      
 </body>
 </html>`
-return page
+    return page
 }
 module.exports = generateTeam
