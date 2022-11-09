@@ -1,9 +1,8 @@
 const generateTeam = (team) => {
-    console.log(team);
+    //Empty array to push html to.
     const html = [];
+// For loop with if statement to check getRole method and push to html array.
     for (let i = 0; i < team.length; i++) {
-
-
 
         if (team[i].getRole() === 'Manager') {
 
@@ -20,9 +19,7 @@ const generateTeam = (team) => {
     </div>
         `;
             html.push(managerHtml);
-
         }
-
 
         if (team[i].getRole() === 'Engineer') {
 
@@ -39,7 +36,6 @@ const generateTeam = (team) => {
     </div>
         `;
             html.push(engineerHtml);
-
         }
 
         if (team[i].getRole() === 'Intern') {
@@ -57,10 +53,9 @@ const generateTeam = (team) => {
     </div>
         `;
             html.push(internHtml);
-
         }
     }
-
+// return the fully rendered page with the html array.
     const page = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -84,4 +79,5 @@ const generateTeam = (team) => {
 </html>`
     return page
 }
+//export generateTeam function
 module.exports = generateTeam

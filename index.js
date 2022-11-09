@@ -6,7 +6,7 @@ const fs = require('fs');
 const generateHTML = require('./src/generate-html')
 const employeeStorage = []
 
-//ask manager
+// start manager question prompt
 function makeManager() {
     return inquirer.prompt([{
         type: "input",
@@ -29,15 +29,16 @@ function makeManager() {
         message: "What is your office number?"
     }
 
-
+//create new manager object with values of prompt answers.
+//push to employee storageArray.
     ]).then((answers) => {
         const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
         employeeStorage.push(manager);
-        console.log(employeeStorage);
+        
         addAnother();
     });
 };
-
+//present menu to add more team members or finish team
 function addAnother() {
     return inquirer.prompt([{
         type: "list",
@@ -55,11 +56,11 @@ function addAnother() {
                 break;
 
             case "Finish":
-             makeTeam()
+                makeTeam()
         }
     });
 };
-
+// start engineer question prompt.
 function makeEngineer() {
     return inquirer.prompt([{
         type: "input",
@@ -82,16 +83,17 @@ function makeEngineer() {
         message: "What is your Github username?"
     }
 
-
+//create new engineer object with values of prompt answers.
+//push to employee storageArray.
     ]).then((answers) => {
         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
         employeeStorage.push(engineer);
-        console.log(employeeStorage);
+        
         addAnother();
     });
 
 }
-
+// start intern question prompt.
 function makeIntern() {
     return inquirer.prompt([{
         type: "input",
@@ -114,25 +116,27 @@ function makeIntern() {
         message: "What is your school?"
     }
 
-
+//create new intern object with values of prompt answers.
+//push to employee storageArray.
     ]).then((answers) => {
         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
         employeeStorage.push(intern);
-        console.log(employeeStorage);
+       
         addAnother();
     });
 };
-
+// write html file with employee storageArray.
 const makeTeam = () => {
     const pageHTML = generateHTML(employeeStorage);
-console.log(pageHTML, "please work")
-fs.writeFile("./dist/team-profile.html",pageHTML,(err)=>{
-    if(err){
-        console.log(err);
-    }else{
-        console.log("html file created")
+    console.log(pageHTML, "please work")
+    fs.writeFile("./dist/team-profile.html", pageHTML, (err) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("html file created")
+        }
     }
-    }
-)
+    )
 }
+//initialize
 makeManager()

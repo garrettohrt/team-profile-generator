@@ -3,7 +3,7 @@ const employee = new Employee("garrett", "234", "go@go.com");
 
 describe("Employee test", () => {
     it("should get the constructor values for the employee object", () => {
-       
+
         expect(employee.name).toEqual("garrett");
         expect(employee.id).toEqual("234");
         expect(employee.email).toEqual("go@go.com");
