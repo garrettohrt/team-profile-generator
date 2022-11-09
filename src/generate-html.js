@@ -27,11 +27,11 @@ const generateTeam = (team) => {
         <div class="card" style="width: 18rem;">
         <div class="card-header">
        ${team[i].name}<br/>
-       <i class="fa-solid fa-glasses"></i>Engineer</div>
+       <i class="fasfa-glasses"></i>Engineer</div>
        <ul class="list-group list-group-flush">
         <li class="list-group-item">${team[i].id}</li>
         <li class="list-group-item">Email:<span id="email"><a href="mailto:${team[i].email}">${team[i].email}</a>
-        <li class="list-group-item">Github username: ${team[i].github}</li>
+        <li class="list-group-item">Github username: <a target="_blank" href="https://github.com/${team[i].github}">${team[i].github}</a></li>
         </ul>
     </div>
         `;
@@ -44,7 +44,7 @@ const generateTeam = (team) => {
         <div class="card" style="width: 18rem;">
         <div class="card-header">
        ${team[i].name}<br/>
-       <i class="fa-solid fa-school"></i>Intern</div>
+       <i class="fas fa-school"></i>Intern</div>
        <ul class="list-group list-group-flush">
         <li class="list-group-item">${team[i].id}</li>
         <li class="list-group-item">Email:<span id="email"><a href="mailto:${team[i].email}">${team[i].email}</a>
